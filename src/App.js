@@ -33,28 +33,22 @@ newAddon=()=>{
 }
 
 enterPressed=(e)=>{
-  
     this.setState({
       setClass:"error"
     })
-  
     if(e.key=="Enter"){
       this.newAddon()
     }
 }
 
 checked=(e)=>{
-  // console.log(e.target.name);
   const name=e.target.name
-  console.log(name,this.state[name]);
-  
   this.setState({
     [name]:!this.state[name]
   })
  }
 
  validate=(e)=>{
-   console.log(e.target.value,"textbox")
    if(e.target.value==""){
     this.setState({
       setClass:"error"
@@ -63,8 +57,6 @@ checked=(e)=>{
  }
 
 delete=(i)=>{
-  console.log(i,"abcddsdf")
-  console.log(this.state.arr,"arr")
   this.setState({
     arr:this.state.arr.filter((v,index,arr)=>{
       return arr.indexOf(v)!=i
@@ -83,7 +75,6 @@ this.setState({
 
 save=(i)=>{
   let a={...this.state}    
-
   a.arr[i]=this.state.text2
   this.setState({
     ...a,
