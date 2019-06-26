@@ -10,10 +10,11 @@
   border:1px solid #dadada;
   width:80%;
   display:flex;
+  justify-content: space-evenly;
 }
 
 .val{
-  width:95%;
+  width:85%;
 }
 
 .textbox{
