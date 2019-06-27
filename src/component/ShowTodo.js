@@ -11,7 +11,7 @@ class ShowTodo extends Component{
                             <input type="checkbox"></input>
                             <div className="val">{val}</div>
                             <button>Edit</button>
-                            <button>X</button>
+                            <button onClick={()=>this.props.delete(i)}>X</button>
                         </div>
                     )
                 }

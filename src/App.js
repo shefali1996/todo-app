@@ -31,10 +31,22 @@ class App extends Component{
     }
   }
 
+  delete=(i)=>{
+    this.setState({
+      arr:this.state.arr.filter((v,index,arr)=>
+      {
+        return arr.indexOf(v)!=i;
+      }
+      )
+    })
+  }
+
   render(){
     return(
       <div>
-        <ShowTodo data={this.state}/>
+        <ShowTodo data={this.state}
+         delete={this.delete}
+         />
         <TextBox data={this.state}
         getValue={this.getValue}
         submit={this.submit}
