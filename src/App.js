@@ -7,7 +7,8 @@ class App extends Component{
 
   state={
     arr:[],
-    text:""
+    text:"",
+
   }
 
   getValue=(e)=>{
@@ -41,11 +42,20 @@ class App extends Component{
     })
   }
 
+  checked=(i)=>{
+    this.setState({
+    ['check' + i]:!this.state['check'+ i]
+    })
+  }
+
+
   render(){
+   
     return(
       <div>
         <ShowTodo data={this.state}
          delete={this.delete}
+         checked={this.checked}
          />
         <TextBox data={this.state}
         getValue={this.getValue}

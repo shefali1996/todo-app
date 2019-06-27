@@ -8,9 +8,10 @@ class ShowTodo extends Component{
                 {
                     this.props.data.arr.map((val,i)=>
                         <div className="row" key={i}>
-                            <input type="checkbox"></input>
+                            <input type="checkbox" onClick={()=>this.props.checked(i)}></input>
                             <div className="val">{val}</div>
-                            <button>Edit</button>
+                            <div>{this.props.data['check' + i] && 'Complete'}</div>
+                            <button onClick={()=>this.props.edit(i)} >Edit</button>
                             <button onClick={()=>this.props.delete(i)}>X</button>
                         </div>
                     )
