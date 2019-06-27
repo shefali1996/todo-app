@@ -11,6 +11,7 @@ body{
   width:80%;
   display:flex;
   justify-content: space-around;
+  padding:0.2em;
 }
 
 .textbox{
@@ -23,4 +24,8 @@ body{
 
 button{
   background-color: rgb(126, 179, 240);
+}
+
+.red{
+  border:1px solid red;
 }

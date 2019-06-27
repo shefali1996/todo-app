@@ -8,11 +8,14 @@ class App extends Component{
   state={
     arr:[],
     text:"",
+    text1:"",
+    error:""
 
   }
 
   getValue=(e)=>{
     this.setState({
+      error:"",
       text:e.target.value,
     });
   }
@@ -21,7 +24,8 @@ class App extends Component{
     if(this.state.text!=""){
       this.setState({
         arr:this.state.arr.concat(this.state.text),
-        text:""
+        text:"",
+        error:"red"
       })
     }
   }
@@ -48,6 +52,32 @@ class App extends Component{
     })
   }
 
+  edit=(i)=>{
+    this.setState({
+      ['edit' + i]:!this.state['edit'+ i],
+      text1:this.state.arr[i]
+    })
+  }
+
+  save=(i)=>{
+    let a={}
+    a=this.state
+    a.arr[i]=a.text1
+    this.setState({
+      ...a
+    })
+    this.setState({
+      ['edit' + i]:!this.state['edit'+ i]
+
+    })
+  }
+
+  getValue1=(e)=>{
+    this.setState({
+      text1:e.target.value,
+    });
+  }
+
 
   render(){
    
@@ -56,6 +86,9 @@ class App extends Component{
         <ShowTodo data={this.state}
          delete={this.delete}
          checked={this.checked}
+         edit={this.edit}
+         save={this.save}
+         getValue1={this.getValue1}
          />
         <TextBox data={this.state}
         getValue={this.getValue}
