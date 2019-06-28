@@ -10,7 +10,13 @@ class ShowTodo extends Component {
             <input type="checkbox" onClick={() => this.props.checked(i)} />
             <div className="val">{val.text}</div>
             <div>{this.props.data.arr[i].check && "Completed"}</div>
-            {this.props.data.arr[i].edit && <input type="text"  onChange={(e)=>this.props.getValue1(e,i)} value={this.props.data.arr[i].text1}/>}
+            {this.props.data.arr[i].edit && (
+              <input
+                type="text"
+                onChange={e => this.props.getValue1(e, i)}
+                value={this.props.data.arr[i].text1}
+              />
+            )}
             <button
               onClick={
                 this.props.data.arr[i].edit

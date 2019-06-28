@@ -15,12 +15,13 @@ class App extends Component {
 
   getValue = e => {
     this.setState({
-      text: e.target.value
+      text: e.target.value,
+      error:"blue"
     });
   };
 
   submit = () => {
-    if (this.state.text != "") {
+    if (this.state.text !== "") {
       const todo = {
         text: this.state.text,
         completed: false,
@@ -32,21 +33,31 @@ class App extends Component {
       this.setState({
         arr: this.state.arr.concat(todo),
         text: "",
-        error: "red"
       });
+    }
+    if(this.state.text===""){
+      this.setState({
+        error:"red"
+      })
     }
   };
 
+
   enterKey = e => {
-    if (e.key == "Enter" && e.target.value != "") {
+    if (e.key === "Enter" && e.target.value !== "") {
       this.submit();
+    }
+    if (e.key === "Enter" && e.target.value === "") {
+      this.setState({
+        error:"red"
+      })
     }
   };
 
   delete = i => {
     this.setState({
       arr: this.state.arr.filter((v, index, arr) => {
-        return arr.indexOf(v) != i;
+        return arr.indexOf(v) !== i;
       })
     });
   };

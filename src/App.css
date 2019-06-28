@@ -18,6 +18,13 @@ body{
   width:80%;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .val{
   width:80%;
 }
@@ -28,4 +35,8 @@ button{
 
 .red{
   border:1px solid red;
+}
+
+.blue{
+  border:1px solid rgb(92, 153, 233);
 }
