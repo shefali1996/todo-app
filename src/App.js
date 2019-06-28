@@ -4,24 +4,33 @@ import TextBox from "./component/TextBox";
 import ShowTodo from "./component/ShowTodo";
 
 class App extends Component {
-  state = {
-    arr: [],
-    text: "",
-    text1: "",
-    error: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      arr: [],
+      text: "",
+      error: ""
+    };
+  }
 
   getValue = e => {
     this.setState({
-      error: "",
       text: e.target.value
     });
   };
 
   submit = () => {
     if (this.state.text != "") {
+      const todo = {
+        text: this.state.text,
+        completed: false,
+        check: false,
+        edit: false,
+        save: false,
+        text1: this.state.text
+      };
       this.setState({
-        arr: this.state.arr.concat(this.state.text),
+        arr: this.state.arr.concat(todo),
         text: "",
         error: "red"
       });
@@ -43,33 +52,35 @@ class App extends Component {
   };
 
   checked = i => {
+    let newState = { ...this.state };
+    newState.arr[i].check = !this.state.arr[i].check;
     this.setState({
-      ["check" + i]: !this.state["check" + i]
+      ...newState
     });
   };
 
   edit = i => {
+    let newState = { ...this.state };
+    newState.arr[i].edit = !this.state.arr[i].edit;
     this.setState({
-      ["edit" + i]: !this.state["edit" + i],
-      text1: this.state.arr[i]
+      ...newState
     });
   };
 
   save = i => {
-    let a = {...this.state};
-    // a = this.state;
-    a.arr[i] = a.text1;
+    let newState = { ...this.state };
+    newState.arr[i].text = newState.arr[i].text1;
+    newState.arr[i].edit = !this.state.arr[i].edit;
     this.setState({
-      ...a
-    });
-    this.setState({
-      ["edit" + i]: !this.state["edit" + i]
+      ...newState
     });
   };
 
-  getValue1 = e => {
+  getValue1 = (e, i) => {
+    let newState = { ...this.state };
+    newState.arr[i].text1 = e.target.value;
     this.setState({
-      text1: e.target.value
+      ...newState
     });
   };
 

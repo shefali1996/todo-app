@@ -8,8 +8,8 @@ class TextBox extends Component {
         <h2>Todo</h2>
         <div>
           <input
+            className={this.props.data.error +" textbox"}
             placeholder="Your Todo..."
-            className={this.props.data.error + " textbox"}
             type="text"
             onChange={this.props.getValue}
             value={this.props.data.text}
